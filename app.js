@@ -15,8 +15,7 @@ for (let i = 0; i < 256; i++) {
 
 submit.addEventListener('click', () => {
     let userInput = document.querySelector('#size');
-    let newGridSize = userInput.value;
-    // grid size can't be more than 100 by 100
+    let newGridSize = (userInput.value <= 100 ? userInput.value : 100);
     deleteOldGrid();
     addNewDivs(newGridSize);
 });
