@@ -10,9 +10,31 @@
 </head>
 
 <body>
-    <div class="grid container">
+    <header>
+        <h1> Etch a sketch!</h1>
+    </header>
 
+    <div class="grid-control">
+        <h2>Let's draw freely!</h2>
+        <h3>Change the grid</h3>
+        <div class="grid-size">
+            <label for="grid">Enter a number: </label>
+            <input id="grid" type="text" placeholder="16" name="grid">
+            <button class="btn submit" type="submit">Submit</button>
+        </div>
+        <h3>Change the color</h3>
+        <div class="grid-color">
+            <button class="btn mono">Black & White</button>
+            <button class="btn pastel">Pastel</button>
+            <button class="btn random">Random</button>
+            <button class="btn reset">Reset</button>
+        </div>
     </div>
+
+    <div class="container">
+    </div>
+
+    <footer>Made by Yuri the doer</footer>
 
 </body>
 <script src="app.js"></script>
