@@ -1,7 +1,10 @@
 const container = document.querySelector('.container');
 const submit = document.querySelector('.btn.submit');
-const div = document.querySelector('div');
-const divs = document.querySelectorAll('.div');
+const monoBtn = document.querySelector('.mono');
+const pastelBtn = document.querySelector('.pastel');
+const randomBtn = document.querySelector('.random');
+const resetBtn = document.querySelector('.reset');
+
 
 
 // Default divs. 16 by 16
@@ -43,15 +46,19 @@ function addNewDivs(newGridSize) {
 // Make new right squared grid.
 function makeNewGrid(newGridSize) {
     container.style.gridTemplateColumns = `repeat(${newGridSize}, 1fr)`;
+    let divs = document.querySelectorAll('.div');
+    divs.forEach(div => {
+        div.addEventListener('mouseover', changeColor);
+    });
 }
 
 
-// Change the color of hovered divs.
-
+let divs = document.querySelectorAll('.div');
 divs.forEach(div => {
     div.addEventListener('mouseover', changeColor);
 });
 
+// Change to the default hovered color.
 function changeColor(e) {
     e.target.classList.add("hovered");
 }
