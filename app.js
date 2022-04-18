@@ -103,7 +103,9 @@ function changeToMono() {
 
 pastelBtn.addEventListener('click', changeToPastel);
 
-pastelColors = ['#F7E1DE', '#EBD4F0', '#D2E4F3', '#FEF8E4', '#E0F2D9', '#C9EACD']
+pastelColors = ['#F7E1DE', '#EBD4F0', '#D2E4F3', '#FEF8E4', '#E0F2D9', '#C9EACD'
+    , '#BAAAF7', '#FFB8F3',
+    '#FFDBF5', '#FFF8E8', '#C2C3F5']
 
 function changeToPastel() {
     let divs = document.querySelectorAll('.div');
