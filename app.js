@@ -101,18 +101,19 @@ function changeToMono() {
 }
 
 
-// pastelBtn.addEventListener('click', changeToPastel);
+pastelBtn.addEventListener('click', changeToPastel);
 
-// function changeToPastel() {
-//     let divs = document.querySelectorAll('.div');
-//     divs.forEach(div => {
-//         div.addEventListener('mouseover', (e) => {
-//             e.target.classList.add('hovered');
-//             let rgbNum = getRandomInt(256);
-//             div.style.backgroundColor = `rgb(${rgbNum},${rgbNum},${rgbNum})`;
-//         });
-//     })
-// }
+pastelColors = ['#F7E1DE', '#EBD4F0', '#D2E4F3', '#FEF8E4', '#E0F2D9', '#C9EACD']
+
+function changeToPastel() {
+    let divs = document.querySelectorAll('.div');
+    divs.forEach(div => {
+        div.addEventListener('mouseover', (e) => {
+            e.target.classList.add('hovered');
+            div.style.backgroundColor = pastelColors[Math.floor(Math.random() * pastelColors.length)];;
+        });
+    })
+}
 
 randomBtn.addEventListener('click', changeToRandom);
 
