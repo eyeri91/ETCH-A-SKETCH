@@ -18,10 +18,14 @@ for (let i = 0; i < 256; i++) {
 // React to the user input submission
 
 submit.addEventListener('click', () => {
-    let userInput = document.querySelector('#size').value;
-    let newGridSize = (userInput.value <= 100 ? userInput.value : 100);
-    deleteOldGrid();
-    addNewDivs(newGridSize);
+    let userInput = document.querySelector('#size');
+    if (userInput.value == '') {
+        alert('ERROR: No input given.')
+    } else {
+        let newGridSize = (userInput.value <= 100 ? userInput.value : 100);
+        deleteOldGrid();
+        addNewDivs(newGridSize);
+    }
 });
 
 // Delete the old divs
@@ -47,22 +51,21 @@ function addNewDivs(newGridSize) {
 // Make new right squared grid.
 function makeNewGrid(newGridSize) {
     container.style.gridTemplateColumns = `repeat(${newGridSize}, 1fr)`;
+    let divs = document.querySelectorAll('.div');
+    divs.forEach(div => {
+        div.addEventListener('mouseover', addHovered);
+    });
 }
 
 
 let divs = document.querySelectorAll('.div');
 divs.forEach(div => {
-    div.addEventListener('mouseover', changeColor);
+    div.addEventListener('mouseover', addHovered);
 });
 
-// Change to the default hovered color.
-function changeColor(e) {
+function addHovered(e) {
     e.target.classList.add("hovered");
 }
-
-// any color button is clicked
-//  Remove any class contains 'hovered'
-// Add new hoveredcolor;
 
 
 buttons.forEach(btn => {
@@ -74,18 +77,61 @@ function removeHovered() {
     divs.forEach(div => {
         if (div.classList.contains('hovered')) {
             div.classList.remove('hovered');
+            div.style.removeProperty('background-color');
         }
     })
 }
 
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
 
 
-// monoBtn.addEventListener('click', changeToMono);
+monoBtn.addEventListener('click', changeToMono);
 
-// function changeToMono() {
+function changeToMono() {
+    let divs = document.querySelectorAll('.div');
+    divs.forEach(div => {
+        div.addEventListener('mouseover', (e) => {
+            e.target.classList.add('hovered');
+            let rgbNum = getRandomInt(256);
+            div.style.backgroundColor = `rgb(${rgbNum},${rgbNum},${rgbNum})`;
+        });
+    })
+}
 
-// }
 
 // pastelBtn.addEventListener('click', changeToPastel);
-// randomBtn.addEventListener('click', changeToRandom);
-// resetBtn.addEventListener('click', backToDefault);
+
+// function changeToPastel() {
+//     let divs = document.querySelectorAll('.div');
+//     divs.forEach(div => {
+//         div.addEventListener('mouseover', (e) => {
+//             e.target.classList.add('hovered');
+//             let rgbNum = getRandomInt(256);
+//             div.style.backgroundColor = `rgb(${rgbNum},${rgbNum},${rgbNum})`;
+//         });
+//     })
+// }
+
+randomBtn.addEventListener('click', changeToRandom);
+
+function changeToRandom() {
+    let divs = document.querySelectorAll('.div');
+    divs.forEach(div => {
+        div.addEventListener('mouseover', (e) => {
+            e.target.classList.add('hovered');
+            div.style.backgroundColor = `rgb(${getRandomInt(256)},${getRandomInt(256)
+                },${getRandomInt(256)})`;
+        });
+    })
+}
+
+resetBtn.addEventListener('click', backToDefault);
+
+function backToDefault() {
+    let divs = document.querySelectorAll('.div');
+    divs.forEach(div => {
+        div.style.removeProperty('background-color');
+    })
+}
