@@ -1,6 +1,6 @@
 const container = document.querySelector('.container');
 const buttons = document.querySelectorAll('.btn');
-const submit = document.querySelector('.btn.submit');
+const change = document.querySelector('.btn.change');
 const monoBtn = document.querySelector('.mono');
 const pastelBtn = document.querySelector('.pastel');
 const randomBtn = document.querySelector('.random');
@@ -17,7 +17,7 @@ for (let i = 0; i < 256; i++) {
 
 // React to the user input submission
 
-submit.addEventListener('click', () => {
+change.addEventListener('click', () => {
     let userInput = document.querySelector('#size');
     if (userInput.value == '') {
         alert('ERROR: No input given.')
